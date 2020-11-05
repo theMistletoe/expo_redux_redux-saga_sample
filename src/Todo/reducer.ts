@@ -1,8 +1,4 @@
-type Task = {
-  id: string;
-  title: string;
-  description: string;
-}
+import { Task } from './Types/Task';
 
 const INITIAL_STATE: Task[] = [
   {
@@ -28,6 +24,11 @@ const reducer = (state = INITIAL_STATE, action) => {
     case 'DELETE_TASK':
       const newTasks: Task[] = state.filter((todo: Task) => todo.id !== action.id);
       return newTasks
+    case 'UPDATE_TASK':
+      const updatedTasks: Task[] = state.slice();
+      updatedTasks.find((task: Task) => task.id === action.task.id)!.title = action.task.title;
+      updatedTasks.find((task: Task) => task.id === action.task.id)!.description = action.task.description;
+      return updatedTasks
     default:
       return state;
   }

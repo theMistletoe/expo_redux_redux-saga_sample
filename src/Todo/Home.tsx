@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Button, FlatList } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
-import { addTask, deleteTask } from './actions';
+import { addTask, deleteTask, updateTask } from './actions';
 
 export default function Home() {
   const getData = useSelector((state: any) => state);
@@ -23,6 +23,14 @@ export default function Home() {
         <Button
           onPress={() => dispatch(addTask("カバヤ"))}
           title="setName"
+        />
+        <Button
+          onPress={() => dispatch(updateTask({
+            id: "0",
+            title: 'ナナシ',
+            description: "テストディスクリプション"
+          }))}
+          title="update"
         />
       </View>
       {/* ストアは、以下の様なJSONで記述されています。combine reducerのキーにuserを使ったのでuserプロパティの中に、stateが保存されます。 */}

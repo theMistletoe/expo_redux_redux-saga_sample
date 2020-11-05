@@ -1,7 +1,17 @@
+import { Task } from './Types/Task';
+
 export const ADD_TASK = "ADD_TASK";
 export const DELETE_TASK = "DELETE_TASK";
+export const UPDATE_TASK = "UPDATE_TASK";
 
-// TODO 未実装
+
+// TODO Update
+export const updateTask = (task: Task) => ({
+  type: 'UPDATE_TASK',
+  task
+});
+
+
 export const deleteTask = (id: string) => ({
   type: 'DELETE_TASK',
   id
