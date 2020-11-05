@@ -34,7 +34,8 @@ const INITIAL_STATE: Task[] = [
 const reducer = (state = INITIAL_STATE, action) => {  
   switch (action.type) {
     case 'ADD_TASK':
-      return [...state, {title: action.title}]
+      const xxx = {title: action.title};
+      return [...state, xxx];
     case 'DELETE_NAME':
       return {...state, name: ''}
     default:
