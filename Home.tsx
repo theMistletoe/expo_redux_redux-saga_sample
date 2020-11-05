@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, Button } from 'react-native'
-import { setName, deleteName } from './redux'
+import { View, Text, Button, FlatList } from 'react-native'
+import { deleteName, addTask } from './redux'
 import {store} from './redux'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -11,14 +11,18 @@ export default function Home() {
 
   return (
     <View style={{flex: 1, justifyContent: 'space-around', alignItems: 'center'}}>
-      <Text style={{marginTop: 100}}>My name is {getData.user.name}.</Text>
+      {/* <Text style={{marginTop: 100}}>My name is {getData.user.name}.</Text> */}
+      <FlatList
+        data={getData.todos}
+        renderItem={({item, index}) => <Text key={index}>{item.title}</Text>}
+      />
       <View style={{flexDirection: 'row'}}>
         <Button
           onPress={() => dispatch(deleteName())}
           title="deleteName"
         />
         <Button
-          onPress={() => dispatch(setName("カバヤ"))}
+          onPress={() => dispatch(addTask("カバヤ"))}
           title="setName"
         />
       </View>

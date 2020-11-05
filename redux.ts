@@ -14,18 +14,18 @@ export const deleteName = () => ({
 });
 
 // 引数nameをとり、{type: "ADD_NAME", name: name}を返すjsの関数。
-export const setName = name => ({  
-  type: 'ADD_NAME',
-  name: name,
+export const addTask = (title:string) => ({  
+  type: 'ADD_TASK',
+  title: title,
 });
 
-type Info = {
-  name: string;
+type Task = {
+  title: string;
 }
 
-const INITIAL_STATE:Info = {
-  name: 'Nanasi'
-}
+const INITIAL_STATE: Task[] = [
+  {title: 'Nanasi'}
+]
 
 // reducers.js
 // reduxではglobal stateを巨大なjson(store)として管理します。stateの変更はjsonの書き換えによってのみ管理します。
@@ -33,8 +33,8 @@ const INITIAL_STATE:Info = {
 // reducerはactionで生成されたオブジェクトを受け取り、巨大なjson(store)を書き換える関数です。
 const reducer = (state = INITIAL_STATE, action) => {  
   switch (action.type) {
-    case 'ADD_NAME':
-      return {...state, name: action.name}
+    case 'ADD_TASK':
+      return [...state, {title: action.title}]
     case 'DELETE_NAME':
       return {...state, name: ''}
     default:
@@ -43,7 +43,7 @@ const reducer = (state = INITIAL_STATE, action) => {
 }
 
 export const reducers = combineReducers({  
-  user: reducer
+  todos: reducer
 })
 
 // store.js
