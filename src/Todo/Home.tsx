@@ -1,8 +1,7 @@
 import React from 'react'
 import { View, Text, Button, FlatList } from 'react-native'
-import { deleteName, addTask } from './redux'
-import {store} from './redux'
 import { useSelector, useDispatch } from 'react-redux'
+import { addTask, deleteName } from './actions';
 
 export default function Home() {
   const getData = useSelector((state: any) => state);
