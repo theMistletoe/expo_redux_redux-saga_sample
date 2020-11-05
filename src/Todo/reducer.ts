@@ -1,9 +1,15 @@
 type Task = {
+  id: string;
   title: string;
+  description: string;
 }
 
 const INITIAL_STATE: Task[] = [
-  {title: 'Nanasi'}
+  {
+    id: "0",
+    title: 'Nanasi',
+    description: "test Descriotion"
+  }
 ]
 
 // reducers.js
@@ -13,8 +19,12 @@ const INITIAL_STATE: Task[] = [
 const reducer = (state = INITIAL_STATE, action) => {  
   switch (action.type) {
     case 'ADD_TASK':
-      const xxx = {title: action.title};
-      return [...state, xxx];
+      const newTask: Task = {
+        id: Math.random().toString(32).substring(2),
+        title: action.title,
+        description: ""
+      };
+      return [...state, newTask];
     case 'DELETE_NAME':
       return {...state, name: ''}
     default:
