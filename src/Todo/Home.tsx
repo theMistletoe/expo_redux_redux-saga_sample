@@ -32,6 +32,10 @@ export default function Home() {
           }))}
           title="update"
         />
+        <Button
+          onPress={() => dispatch({type: 'JOKE_FETCH_REQUESTED'})}
+          title="joke"
+        />
       </View>
       {/* ストアは、以下の様なJSONで記述されています。combine reducerのキーにuserを使ったのでuserプロパティの中に、stateが保存されます。 */}
       {/* stor のstateを取り出すにはgetStateメソッドを使います。JSON.stringifyで文字列へと変換しています。 */}

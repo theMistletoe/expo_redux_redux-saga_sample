@@ -1,16 +1,14 @@
 import { Task } from './Types/Task';
 
 export const ADD_TASK = "ADD_TASK";
+export const JOKE_FETCH_SUCCEEDED = "JOKE_FETCH_SUCCEEDED";
 export const DELETE_TASK = "DELETE_TASK";
 export const UPDATE_TASK = "UPDATE_TASK";
 
-
-// TODO Update
 export const updateTask = (task: Task) => ({
   type: 'UPDATE_TASK',
   task
 });
-
 
 export const deleteTask = (id: string) => ({
   type: 'DELETE_TASK',
