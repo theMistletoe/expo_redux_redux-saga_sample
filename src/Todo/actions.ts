@@ -1,7 +1,6 @@
 import { Task } from './Types/Task';
 
 export const ADD_TASK = "ADD_TASK";
-export const JOKE_FETCH_SUCCEEDED = "JOKE_FETCH_SUCCEEDED";
 export const DELETE_TASK = "DELETE_TASK";
 export const UPDATE_TASK = "UPDATE_TASK";
 

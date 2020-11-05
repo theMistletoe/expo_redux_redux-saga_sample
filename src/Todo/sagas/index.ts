@@ -7,17 +7,23 @@ export function fetchJokeApi() {
     .then(response => response.json())
 }
 
+type Joke = {
+  "id": number;
+  "type": string;
+  "setup": string;
+  "punchline": string;
+}
+
 export function* fetchJoke() {
   try {
-    const joke = yield call(fetchJokeApi);
-    const ret = JSON.stringify(joke)
+    const joke: Joke = yield call(fetchJokeApi);
     yield put({
       type: 'ADD_TASK',
-      title: ret,
+      title: joke.setup.concat('→', joke.punchline),
     });
   } catch (e) {
     // TODO 未実装
-      yield put({type: "USER_FETCH_FAILED", message: e.message});
+    yield put({type: "USER_FETCH_FAILED", message: e.message});
   }
 }
 
