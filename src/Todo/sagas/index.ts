@@ -16,6 +16,7 @@ export function* fetchJoke() {
       title: ret,
     });
   } catch (e) {
+    // TODO 未実装
       yield put({type: "USER_FETCH_FAILED", message: e.message});
   }
 }
