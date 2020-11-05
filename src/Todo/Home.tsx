@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Button, FlatList } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
-import { addTask, deleteName } from './actions';
+import { addTask, deleteTask } from './actions';
 
 export default function Home() {
   const getData = useSelector((state: any) => state);
@@ -17,7 +17,7 @@ export default function Home() {
       />
       <View style={{flexDirection: 'row'}}>
         <Button
-          onPress={() => dispatch(deleteName())}
+          onPress={() => dispatch(deleteTask("0"))}
           title="deleteName"
         />
         <Button

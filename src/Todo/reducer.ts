@@ -16,7 +16,7 @@ const INITIAL_STATE: Task[] = [
 // reduxではglobal stateを巨大なjson(store)として管理します。stateの変更はjsonの書き換えによってのみ管理します。
 // actionは純粋なjsのオブジェクトを作る関数であることを思い出してください。
 // reducerはactionで生成されたオブジェクトを受け取り、巨大なjson(store)を書き換える関数です。
-const reducer = (state = INITIAL_STATE, action) => {  
+const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'ADD_TASK':
       const newTask: Task = {
@@ -25,8 +25,9 @@ const reducer = (state = INITIAL_STATE, action) => {
         description: ""
       };
       return [...state, newTask];
-    case 'DELETE_NAME':
-      return {...state, name: ''}
+    case 'DELETE_TASK':
+      const newTasks: Task[] = state.filter((todo: Task) => todo.id !== action.id);
+      return newTasks
     default:
       return state;
   }
